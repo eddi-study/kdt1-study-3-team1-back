@@ -1,4 +1,4 @@
-package com.example.demo.product.account.repository;
+package com.example.demo.account.repository;
 
 import lombok.NoArgsConstructor;
 

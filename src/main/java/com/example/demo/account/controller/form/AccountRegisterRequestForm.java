@@ -1,6 +1,6 @@
-package com.example.demo.product.account.controller.form;
+package com.example.demo.account.controller.form;
 
-import com.example.demo.product.account.entity.RoleType;
+import com.example.demo.account.entity.RoleType;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
