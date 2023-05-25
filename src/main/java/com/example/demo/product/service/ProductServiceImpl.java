@@ -1,5 +1,9 @@
 package com.example.demo.product.service;
 
+import com.example.demo.account.entity.Account;
+import com.example.demo.account.entity.AccountRole;
+import com.example.demo.account.repository.AccountRepository;
+import com.example.demo.account.repository.AccountRoleRepository;
 import com.example.demo.product.controller.form.ProductRegisterRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.repository.ProductRepository;
@@ -17,22 +21,23 @@ import java.util.Optional;
 public class ProductServiceImpl implements  ProductService{
 
     final private ProductRepository productRepository;
+    final private AccountRepository accountRepository;
+    final private AccountRoleRepository accountRoleRepository;
 
     @Override
     public Product register(ProductRegisterRequestForm requestForm){
-//        final String roleType = "BUSINESS";
-//
-//        Optional<Account> maybeAccount = productRepository.findByEmail(requestForm.getEmail());
-//
-//        if(!(maybeAccount.getAccountRole()).equals(roleType)){
-//            log.info("사업자가 아닌 사용자는 상품을 등록할 수 없습니다.");
-//            return null;
-//        }
-//        final Product product = requestForm.toProduct();
-//
-//        return productRepository.save(product);
+        final String roleType = "BUSINESS";
 
-        return null;
+        Optional<Account> maybeAccount = accountRepository.findByAccountId(requestForm.getAccountId());
+        Optional<AccountRole> maybeAccountRole = accountRoleRepository.findByAccountRole(maybeAccount.get().getAccountRole());
+
+        if(!maybeAccountRole.equals(roleType)){
+            log.info("사업자가 아닌 사용자는 상품을 등록할 수 없습니다.");
+            return null;
+        }
+
+        final Product product = requestForm.toProduct();
+        return productRepository.save(product);
     }
 
     @Override

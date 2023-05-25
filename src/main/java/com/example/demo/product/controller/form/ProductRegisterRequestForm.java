@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductRegisterRequestForm {
 
-    final private String email;
+    final private Long accountId;
     final private String productName;
     final private Integer productPrice;
 
     public Product toProduct(){
-        return new Product(email, productName, productPrice);
+        return new Product(productName, productPrice);
     }
 }

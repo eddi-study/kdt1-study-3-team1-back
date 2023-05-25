@@ -18,11 +18,11 @@ public class TestProduct {
     @Test
     @DisplayName("사업자 회원이 상품을 등록합니다.")
     void 사업자_회원이_상품_정보를_등록_합니다 () {
-        final String email = "business@test.com";
+        final Long accountId = 1L;
         final String productName = "오렌지 티셔츠";
         final Integer productPrice = 5000;
 
-        ProductRegisterRequestForm requestForm = new ProductRegisterRequestForm(email, productName, productPrice);
+        ProductRegisterRequestForm requestForm = new ProductRegisterRequestForm(accountId, productName, productPrice);
         Product product = productService.register(requestForm);
 
         assertEquals(productName, product.getProductName());

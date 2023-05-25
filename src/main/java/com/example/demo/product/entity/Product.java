@@ -20,7 +20,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    private String email;
     private String productName;
     private Integer productPrice;
 
@@ -28,8 +27,7 @@ public class Product {
     @CreationTimestamp
     private LocalDateTime purchaseData;
 
-    public Product(String email, String productName, Integer productPrice) {
-        this.email = email;
+    public Product(String productName, Integer productPrice) {
         this.productName = productName;
         this.productPrice = productPrice;
     }
