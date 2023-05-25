@@ -1,9 +1,10 @@
-package com.example.demo.product.account.service;
+package com.example.demo.account.service;
 
-import com.example.demo.product.account.controller.form.AccountRegisterRequest;
-import com.example.demo.product.account.entity.Account;
-import com.example.demo.product.account.entity.AccountRole;
-import com.example.demo.product.account.entity.Role;
+import com.example.demo.account.controller.form.AccountRegisterRequest;
+import com.example.demo.account.entity.Account;
+import com.example.demo.account.repository.*;
+import com.example.demo.account.entity.AccountRole;
+import com.example.demo.account.entity.Role;
 import com.example.demo.backend.account.repository.*;
 import com.example.demo.product.account.repository.*;
 import lombok.RequiredArgsConstructor;
