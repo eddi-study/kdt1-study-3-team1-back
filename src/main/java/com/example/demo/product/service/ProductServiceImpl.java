@@ -51,4 +51,9 @@ public class ProductServiceImpl implements  ProductService{
 
         return maybeProduct.get();
     }
+
+    @Override
+    public void delete(Long productId){
+        productRepository.deleteById(productId);
+    }
 }
