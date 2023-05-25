@@ -1,4 +1,4 @@
-package com.example.demo.account.entity;
+package com.example.demo.product.account.entity;
 
 public enum RoleType {
     NORMAL,

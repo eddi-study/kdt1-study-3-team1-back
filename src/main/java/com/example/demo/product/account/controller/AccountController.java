@@ -1,7 +1,7 @@
-package com.example.demo.account.controller;
+package com.example.demo.product.account.controller;
 
-import com.example.demo.account.controller.form.AccountRegisterRequestForm;
-import com.example.demo.account.service.AccountService;
+import com.example.demo.product.account.controller.form.AccountRegisterRequestForm;
+import com.example.demo.product.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class AccountController {
 
     final private AccountService accountService;
 
-    @PostMapping("/create")
+    @PostMapping("/create-account")
     public Boolean accountRegister (@RequestBody AccountRegisterRequestForm requestForm) {
         return accountService.register(requestForm.toAccountRegisterRequest());
     }

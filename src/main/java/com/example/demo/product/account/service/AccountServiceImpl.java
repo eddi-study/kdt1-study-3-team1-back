@@ -1,10 +1,11 @@
-package com.example.demo.account.service;
+package com.example.demo.product.account.service;
 
-import com.example.demo.account.controller.form.AccountRegisterRequest;
-import com.example.demo.account.entity.Account;
-import com.example.demo.account.entity.AccountRole;
-import com.example.demo.account.entity.Role;
-import com.example.demo.account.repository.*;
+import com.example.demo.product.account.controller.form.AccountRegisterRequest;
+import com.example.demo.product.account.entity.Account;
+import com.example.demo.product.account.entity.AccountRole;
+import com.example.demo.product.account.entity.Role;
+import com.example.demo.backend.account.repository.*;
+import com.example.demo.product.account.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,7 @@ public class AccountServiceImpl implements AccountService {
 
         final Account account = accountRepository.save(request.toAccount());
 
-        final Role role = roleRepository.findByRoleType(
-                request.getRoleType()).get();
+        final Role role = roleRepository.findByRoleType(request.getRoleType()).get();
         final AccountRole accountRole =
                 new AccountRole(account, role);
         accountRoleRepository.save(accountRole);

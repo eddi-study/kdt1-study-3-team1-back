@@ -1,7 +1,7 @@
-package com.example.demo.account.repository;
+package com.example.demo.product.account.repository;
 
-import com.example.demo.account.entity.Role;
-import com.example.demo.account.entity.RoleType;
+import com.example.demo.product.account.entity.Role;
+import com.example.demo.product.account.entity.RoleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

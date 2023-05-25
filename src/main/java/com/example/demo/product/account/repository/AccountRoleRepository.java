@@ -1,8 +1,8 @@
-package com.example.demo.account.repository;
+package com.example.demo.product.account.repository;
 
-import com.example.demo.account.entity.Account;
-import com.example.demo.account.entity.AccountRole;
-import com.example.demo.account.entity.Role;
+import com.example.demo.product.account.entity.Account;
+import com.example.demo.product.account.entity.AccountRole;
+import com.example.demo.product.account.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
