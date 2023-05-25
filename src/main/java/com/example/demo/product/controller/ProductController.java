@@ -34,4 +34,12 @@ public class ProductController {
         return returnedProductList;
     }
 
+    @GetMapping("/{productId}")
+    public Product readProduct (@PathVariable("productId") Long productId){
+        log.info("readProduct()");
+
+        return productService.read(productId);
+    }
+
+
 }

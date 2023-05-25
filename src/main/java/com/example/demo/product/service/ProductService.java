@@ -9,4 +9,6 @@ public interface ProductService {
     Product register(ProductRegisterRequestForm requestForm);
 
     List<Product> list();
+
+    Product read(Long productId);
 }
