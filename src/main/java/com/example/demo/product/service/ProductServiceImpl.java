@@ -18,6 +18,21 @@ public class ProductServiceImpl implements  ProductService{
     final private ProductRepository productRepository;
 
     @Override
+    public Product register(ProductRegisterRequestForm requestForm){
+        final String roleType = "BUSINESS";
+
+        Optional<Account> maybeAccount = productRepository.findByEmail(requestForm.getEmail());
+
+        if(!(maybeAccount.getAccountRole()).equals(roleType)){
+            log.info("사업자가 아닌 사용자는 상품을 등록할 수 없습니다.");
+            return null;
+        }
+        final Product product = requestForm.toProduct();
+
+        return productRepository.save(product);
+    }
+
+    @Override
     public List<Product> list(){
         return productRepository.findAll(Sort.by(Sort.Direction.DESC, "productId"));
     }

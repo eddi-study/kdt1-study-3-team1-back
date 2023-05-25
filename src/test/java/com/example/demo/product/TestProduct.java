@@ -1,6 +1,6 @@
 package com.example.demo.product;
 
-import com.example.demo.product.controller.form.ProductRequestForm;
+import com.example.demo.product.controller.form.ProductRegisterRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.service.ProductService;
 import org.junit.jupiter.api.DisplayName;
@@ -21,9 +21,8 @@ public class TestProduct {
         final String email = "business@test.com";
         final String productName = "오렌지 티셔츠";
         final Integer productPrice = 5000;
-        // 이미지는 파일을 받아오는 방법을 현재 모르겠다.
 
-        ProductRequestForm requestForm = new ProductRequestForm(email, productName, productPrice);
+        ProductRegisterRequestForm requestForm = new ProductRegisterRequestForm(email, productName, productPrice);
         Product product = productService.register(requestForm);
 
         assertEquals(productName, product.getProductName());
