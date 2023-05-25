@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/account")
 public class AccountController {
 
-    private AccountService accountService;
+    final private AccountService accountService;
 
-    @PostMapping("/register")
+    @PostMapping("/create")
     public Boolean accountRegister (@RequestBody AccountRegisterRequestForm requestForm) {
-        return false;
+        return accountService.register(requestForm.toAccountRegisterRequest());
     }
 }
