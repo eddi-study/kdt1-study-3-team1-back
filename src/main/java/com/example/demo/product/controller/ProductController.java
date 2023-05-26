@@ -18,9 +18,8 @@ public class ProductController {
     final private ProductService productService;
 
     @PostMapping("/product-register")
-    public Product registerProduct (@RequestBody ProductRegisterRequestForm productRegisterRequestForm){
+    public Boolean registerProduct (@RequestBody ProductRegisterRequestForm productRegisterRequestForm){
         log.info("registerProduct()");
-
         return productService.register(productRegisterRequestForm);
     }
 

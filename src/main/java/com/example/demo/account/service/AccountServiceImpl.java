@@ -5,10 +5,11 @@ import com.example.demo.account.entity.Account;
 import com.example.demo.account.repository.*;
 import com.example.demo.account.entity.AccountRole;
 import com.example.demo.account.entity.Role;
-import com.example.demo.backend.account.repository.*;
-import com.example.demo.product.account.repository.*;
+//import com.example.demo.backend.account.repository.*;
+//import com.example.demo.product.account.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
+    @Autowired
     final private AccountRepository accountRepository;
     final private AccountRoleRepository accountRoleRepository;
     final private RoleRepository roleRepository;
