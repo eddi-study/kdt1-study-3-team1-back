@@ -41,10 +41,10 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
-    public void deleteProduct (@PathVariable("productId") Long productId){
+    public Boolean deleteProduct (@PathVariable("productId") Long productId){
         log.info("deleteProduct()");
 
-        productService.delete(productId);
+        return productService.delete(productId);
     }
 
 

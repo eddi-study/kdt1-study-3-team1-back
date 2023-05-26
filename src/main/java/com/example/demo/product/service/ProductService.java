@@ -12,5 +12,5 @@ public interface ProductService {
 
     Product read(Long productId);
 
-    void delete(Long productId);
+    Boolean delete(Long productId);
 }
