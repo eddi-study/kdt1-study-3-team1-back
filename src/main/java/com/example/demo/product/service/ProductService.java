@@ -6,11 +6,11 @@ import com.example.demo.product.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    Boolean register(ProductRegisterRequestForm requestForm);
+    Product register(ProductRegisterRequestForm requestForm);
 
     List<Product> list();
 
     Product read(Long productId);
 
-    void delete(Long productId);
+    Boolean delete(Long productId);
 }
