@@ -65,10 +65,9 @@ public class AccountServiceImpl implements AccountService {
             return responseForm;
         }
 
-        log.info("존재하지 않는 아이디입니다.");
+        log.info("존재하지 않는 패스워드 입니다.");
         return null;
     }
-
 
 
 }
