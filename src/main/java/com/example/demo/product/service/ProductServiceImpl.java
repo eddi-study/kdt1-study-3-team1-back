@@ -6,7 +6,7 @@ import com.example.demo.account.entity.RoleType;
 import com.example.demo.account.repository.AccountRepository;
 import com.example.demo.account.repository.AccountRoleRepository;
 import com.example.demo.account.repository.RoleRepository;
-import com.example.demo.product.controller.form.ProductRegisterRequestForm;
+import com.example.demo.product.controller.form.ProductRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class ProductServiceImpl implements  ProductService{
     final private RoleRepository roleRepository;
 
     @Override
-    public Product register(ProductRegisterRequestForm requestForm){
+    public Product register(ProductRequestForm requestForm){
         final RoleType roleType = BUSINESS;
 
         Optional<Account> maybeAccount =
@@ -76,5 +76,21 @@ public class ProductServiceImpl implements  ProductService{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Product modify(Long productId, ProductRequestForm requestForm){
+        Optional<Product> maybeProduct = productRepository.findById(productId);
+
+        if(maybeProduct.isEmpty()){
+            log.info("상품 정보가 존재하지 않습니다.");
+            return null;
+        }
+
+        Product product = maybeProduct.get();
+        product.setProductName(requestForm.getProductName());
+        product.setProductPrice(requestForm.getProductPrice());
+
+        return productRepository.save(product);
     }
 }

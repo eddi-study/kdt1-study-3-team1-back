@@ -1,6 +1,6 @@
 package com.example.demo.product.controller;
 
-import com.example.demo.product.controller.form.ProductRegisterRequestForm;
+import com.example.demo.product.controller.form.ProductRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +18,9 @@ public class ProductController {
     final private ProductService productService;
 
     @PostMapping("/product-register")
-    public Product registerProduct (@RequestBody ProductRegisterRequestForm productRegisterRequestForm){
+    public Product registerProduct (@RequestBody ProductRequestForm productRequestForm){
         log.info("registerProduct()");
-        return productService.register(productRegisterRequestForm);
+        return productService.register(productRequestForm);
     }
 
     @GetMapping("/list")
@@ -45,6 +45,14 @@ public class ProductController {
         log.info("deleteProduct()");
 
         return productService.delete(productId);
+    }
+
+    @PutMapping("/{productId}")
+    public Product modifyProduct (@PathVariable("productId") Long productId,
+                                  @RequestBody ProductRequestForm requestForm) {
+        log.info("modifyProduct(): "+  requestForm +", id: "+productId);
+
+        return productService.modify(productId, requestForm);
     }
 
 }
