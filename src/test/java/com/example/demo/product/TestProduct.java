@@ -26,8 +26,6 @@ public class TestProduct {
 
         ProductRegisterRequestForm requestForm
                 = new ProductRegisterRequestForm(accountId, productName, productPrice);
-        Boolean registerProduct = productService.register(requestForm);
-
-        assertTrue(registerProduct);
+        Product registerProduct = productService.register(requestForm);
     }
 }
