@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 public class TestProduct {
 
@@ -22,10 +24,10 @@ public class TestProduct {
         final String productName = "오렌지 티셔츠";
         final Integer productPrice = 5000;
 
-        ProductRegisterRequestForm requestForm = new ProductRegisterRequestForm(accountId, productName, productPrice);
-        Product product = productService.register(requestForm);
+        ProductRegisterRequestForm requestForm
+                = new ProductRegisterRequestForm(accountId, productName, productPrice);
+        Boolean registerProduct = productService.register(requestForm);
 
-        assertEquals(productName, product.getProductName());
-        assertEquals(productPrice, product.getProductPrice());
+        assertTrue(registerProduct);
     }
 }
