@@ -30,7 +30,7 @@ public class ProductServiceImpl implements  ProductService{
     final private RoleRepository roleRepository;
 
     @Override
-    public Boolean register(ProductRegisterRequestForm requestForm){
+    public Product register(ProductRegisterRequestForm requestForm){
         final RoleType roleType = BUSINESS;
 
         Optional<Account> maybeAccount =
@@ -41,12 +41,12 @@ public class ProductServiceImpl implements  ProductService{
 
         if(!roleType.equals(role.getRoleType())) {
             log.info("사업자가 아닌 사용자는 상품을 등록할 수 없습니다.");
-            return false;
+            return null;
         }
         else {
             Product product = requestForm.toProduct();
             productRepository.save(product);
-            return true;
+            return product;
         }
     }
 

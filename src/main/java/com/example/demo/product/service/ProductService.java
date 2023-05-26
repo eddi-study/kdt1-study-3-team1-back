@@ -6,7 +6,7 @@ import com.example.demo.product.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    Boolean register(ProductRegisterRequestForm requestForm);
+    Product register(ProductRegisterRequestForm requestForm);
 
     List<Product> list();
 
