@@ -1,6 +1,5 @@
 package com.example.demo.account.entity;
 
-import com.example.demo.account.controller.form.AccountLoginResponseForm;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,5 +33,4 @@ public class Account {
 
         accountRole.setAccount(this);
     }
-
 }
