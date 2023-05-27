@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class ProductRegisterRequestForm {
+public class ProductRequestForm {
 
     final private Long accountId;
     final private String productName;
