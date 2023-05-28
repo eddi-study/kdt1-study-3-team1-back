@@ -1,10 +1,12 @@
 package com.example.demo.order.controller.form;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderListRequestForm {
-    final private Long AccountId;
+    private Long accountId;
 }

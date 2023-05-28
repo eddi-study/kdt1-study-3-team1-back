@@ -34,26 +34,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderListResponseForm> findAllAccountWhoBuyProduct(
-            OrderListRequestForm requestForm){
-
-        List<Orders> orderList =
-                orderRepository.findAllProductWhoByAccount(requestForm.getAccountId());
-
+    public List<OrderListResponseForm> findAllAccountWhoBuyProduct(OrderListRequestForm requestForm){
+        List<Orders> orderList = orderRepository.findAllProductWhoByAccount(requestForm.getAccountId());
         List<OrderListResponseForm> responseFormList = new ArrayList<>();
 
         for(Orders order: orderList){
-            Optional<Product> maybeProduct =
-                    productRepository.findById(order.getProduct().getProductId());
-
-            if(maybeProduct.isPresent()){
-                final Product product = maybeProduct.get();
-                final OrderListResponseForm responseForm = new OrderListResponseForm(
-                        product.getProductId(), product.getProductName(), product.getProductPrice());
-
-                responseFormList.add(responseForm);
+            Optional<Product> maybeProduct = productRepository.findById(order.getProduct().getProductId());
+            if (maybeProduct.isEmpty()) {
+                break;
             }
+            Product product = maybeProduct.get();
+            OrderListResponseForm responseForm = new OrderListResponseForm(product);
+
+            responseFormList.add(responseForm);
         }
+
         return responseFormList;
     }
 

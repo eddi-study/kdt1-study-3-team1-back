@@ -26,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping("/list")
-    public List<OrderListResponseForm> orderList (OrderListRequestForm requestForm) {
+    public List<OrderListResponseForm> orderList (@RequestBody OrderListRequestForm requestForm) {
 //        final Long accountId = accountService.findAccountId(requestForm.getAccountId());
 //        log.info("accountId: " + accountId);
 
