@@ -1,14 +1,15 @@
 package com.example.demo.order.controller;
 
 import com.example.demo.account.service.AccountService;
+import com.example.demo.order.controller.form.OrderListRequestForm;
+import com.example.demo.order.controller.form.OrderListResponseForm;
 import com.example.demo.order.controller.form.OrderResponseForm;
 import com.example.demo.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -22,5 +23,10 @@ public class OrderController {
     @PostMapping("/order")
     public void orderRegister(@RequestBody OrderResponseForm requestForm) {
         orderService.register(requestForm.toOrderRequestForm());
+    }
+
+    @GetMapping("/list")
+    public List<OrderListResponseForm> orderList (@RequestBody OrderListRequestForm requestForm) {
+        return orderService.findAllAccountWhoBuyProduct(requestForm);
     }
 }
