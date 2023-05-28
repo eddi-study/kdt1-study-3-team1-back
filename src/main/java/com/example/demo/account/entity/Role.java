@@ -21,4 +21,8 @@ public class Role {
     public RoleType getRoleType () {
         return roleType;
     }
+
+    public RoleType toRole(Role role) {
+        return role.roleType;
+    }
 }
