@@ -20,7 +20,7 @@ public class OrderController {
     final private OrderService orderService;
     final private AccountService accountService;
 
-    @PostMapping("/order")
+    @PostMapping("/order-product")
     public void orderRegister(@RequestBody OrderResponseForm requestForm) {
         orderService.register(requestForm.toOrderRequestForm());
     }

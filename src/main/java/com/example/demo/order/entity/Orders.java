@@ -28,4 +28,12 @@ public class Orders {
         this.product = product;
         this.account = account;
     }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
