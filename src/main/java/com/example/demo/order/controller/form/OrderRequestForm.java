@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderRequestForm {
     final private Long productId;
-    final private Long AccountId;
+    final private Long accountId;
 }

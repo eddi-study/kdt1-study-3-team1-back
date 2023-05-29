@@ -30,7 +30,12 @@ public class OrderServiceImpl implements OrderService {
     public void register(OrderRequestForm requestForm) {
         final Product product = productRepository.findById(requestForm.getProductId()).get();
         final Account account = accountRepository.findById(requestForm.getAccountId()).get();
-//        orderRepository.save(product, account);
+
+        Orders order = new Orders();
+        order.setProduct(product);
+        order.setAccount(account);
+
+        orderRepository.save(order);
     }
 
     @Override
