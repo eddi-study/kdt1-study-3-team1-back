@@ -44,7 +44,7 @@ jobs:
       ## docker build & push to production
       - name: Docker build & push to prod
         run: |
-            docker login ghcr.io -s ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
             docker buildx create --name arm64builder --use
             docker buildx build -- platform linux/amd64,linux/arm64 -f Dockerfile -t ghcr.io/zage4448/kdt1-study-3-team1-back:latest --push .
             docker logout
