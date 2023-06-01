@@ -6,9 +6,9 @@ on:
       - main
       
 env:
-  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/backend-server
+  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/kdt1-study-3-team1-back
   VERSION: ${{ github.sha }}
-  NAME: backend-server
+  NAME: kdt1-study-3-team1-back
   
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
         run: |
             docker login ghcr.io -s ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
             docker buildx create --name arm64builder --use
-            docker buildx build -- platform linux/amd64,linux/arm64 -f Dockerfile -t ghcr.io/zage4448/backend-server:latest --push .
+            docker buildx build -- platform linux/amd64,linux/arm64 -f Dockerfile -t ghcr.io/zage4448/kdt1-study-3-team1-back:latest --push .
             docker logout
       
       
@@ -82,7 +82,7 @@ jobs:
             
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_TOKEN }}
             
-            docker pull ghcr.io/silenc3502/backend-server:latest
+            docker pull ghcr.io/zage4448/kdt1-study-3-team1-back:latest
             
             docker image prune -f
             docker logout
