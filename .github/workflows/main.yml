@@ -75,7 +75,7 @@ jobs:
             fi
             echo "pass mysql-container"
             
-            if [[ "$(docker ps -qa --filterancestor=backend-deploy-test/backend-deploy-test-server:latest)" ]]; then
+            if [[ "$(docker ps -qa --filter ancestor=backend-deploy-test/backend-deploy-test-server:latest)" ]]; then
               docker rm -f $(docker pas -qa --filter ancestor=backend-deploy-test/backend-deploy-test-server:latest)
             fi
             echo "pass backend-deploy-test/backend-deploy-test-server:latest"
