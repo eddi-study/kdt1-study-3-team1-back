@@ -25,8 +25,8 @@ public class OrderController {
         orderService.register(requestForm.toOrderRequestForm());
     }
 
-    @GetMapping("/list")
-    public List<OrderListResponseForm> orderList (@RequestBody OrderListRequestForm requestForm) {
-        return orderService.findAllAccountWhoBuyProduct(requestForm);
+    @GetMapping("/list/{accountId}")
+    public List<OrderListResponseForm> orderList (@PathVariable("accountId") Long accountId) {
+        return orderService.findAllAccountWhoBuyProduct(accountId);
     }
 }

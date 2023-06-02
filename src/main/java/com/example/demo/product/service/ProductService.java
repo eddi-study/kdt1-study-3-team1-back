@@ -1,5 +1,6 @@
 package com.example.demo.product.service;
 
+import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
 import com.example.demo.product.entity.Product;
 
@@ -14,5 +15,5 @@ public interface ProductService {
 
     Boolean delete(Long productId);
 
-    Product modify(Long productId, ProductRequestForm requestForm);
+    Product modify(ProductModifyRequestForm requestForm);
 }

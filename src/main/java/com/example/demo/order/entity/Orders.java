@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Entity
@@ -28,6 +31,9 @@ public class Orders {
         this.product = product;
         this.account = account;
     }
+
+    @CreationTimestamp
+    private LocalDateTime orderDate;
 
     public void setProduct(Product product) {
         this.product = product;

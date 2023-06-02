@@ -1,5 +1,6 @@
 package com.example.demo.product.controller;
 
+import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.service.ProductService;
@@ -35,7 +36,7 @@ public class ProductController {
 
     @GetMapping("/{productId}")
     public Product readProduct (@PathVariable("productId") Long productId){
-        log.info("readProduct()");
+        log.info("readProduct()" + productId);
 
         return productService.read(productId);
     }
@@ -47,12 +48,11 @@ public class ProductController {
         return productService.delete(productId);
     }
 
-    @PutMapping("/{productId}")
-    public Product modifyProduct (@PathVariable("productId") Long productId,
-                                  @RequestBody ProductRequestForm requestForm) {
-        log.info("modifyProduct(): "+  requestForm +", id: "+productId);
+    @PutMapping("/product-update")
+    public Product modifyProduct (@RequestBody ProductModifyRequestForm requestForm) {
+        log.info("modifyProduct(): "+  requestForm +", id: ");
 
-        return productService.modify(productId, requestForm);
+        return productService.modify(requestForm);
     }
 
 }

@@ -10,5 +10,5 @@ public interface OrderService {
     void register(OrderRequestForm orderRequestForm);
 
     List<OrderListResponseForm> findAllAccountWhoBuyProduct(
-            OrderListRequestForm requestForm);
+            Long accountId);
 }

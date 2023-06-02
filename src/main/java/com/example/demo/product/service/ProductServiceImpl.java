@@ -6,6 +6,7 @@ import com.example.demo.account.entity.RoleType;
 import com.example.demo.account.repository.AccountRepository;
 import com.example.demo.account.repository.AccountRoleRepository;
 import com.example.demo.account.repository.RoleRepository;
+import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.repository.ProductRepository;
@@ -79,8 +80,8 @@ public class ProductServiceImpl implements  ProductService{
     }
 
     @Override
-    public Product modify(Long productId, ProductRequestForm requestForm){
-        Optional<Product> maybeProduct = productRepository.findById(productId);
+    public Product modify(ProductModifyRequestForm requestForm){
+        Optional<Product> maybeProduct = productRepository.findById(requestForm.getProductId());
 
         if(maybeProduct.isEmpty()){
             log.info("상품 정보가 존재하지 않습니다.");
