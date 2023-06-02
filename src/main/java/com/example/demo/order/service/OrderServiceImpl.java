@@ -39,8 +39,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderListResponseForm> findAllAccountWhoBuyProduct(OrderListRequestForm requestForm){
-        List<Orders> orderList = orderRepository.findAllProductWhoByAccount(requestForm.getAccountId());
+    public List<OrderListResponseForm> findAllAccountWhoBuyProduct(Long accountId){
+        List<Orders> orderList = orderRepository.findAllProductWhoByAccount(accountId);
         List<OrderListResponseForm> responseFormList = new ArrayList<>();
 
         for(Orders order: orderList){
@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
                 break;
             }
             Product product = maybeProduct.get();
-            OrderListResponseForm responseForm = new OrderListResponseForm(product);
+            OrderListResponseForm responseForm = new OrderListResponseForm(product, order);
 
             responseFormList.add(responseForm);
         }
