@@ -8,8 +8,10 @@ import com.example.demo.account.repository.AccountRoleRepository;
 import com.example.demo.account.repository.RoleRepository;
 import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
+import com.example.demo.product.controller.form.ProductRequestRefactoringForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.repository.ProductRepository;
+import com.example.demo.redis.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -29,6 +31,7 @@ public class ProductServiceImpl implements  ProductService{
     final private AccountRepository accountRepository;
     final private AccountRoleRepository accountRoleRepository;
     final private RoleRepository roleRepository;
+    final private RedisService redisService;
 
     @Override
     public Product register(ProductRequestForm requestForm){
@@ -93,5 +96,26 @@ public class ProductServiceImpl implements  ProductService{
         product.setProductPrice(requestForm.getProductPrice());
 
         return productRepository.save(product);
+    }
+
+    @Override
+    public Product registerRefactoring(ProductRequestRefactoringForm requestForm) {
+        final RoleType roleType = BUSINESS;
+
+        Optional<Account> maybeAccount =
+                accountRepository.findByAccountId(redisService.getValueByKey(requestForm.getUserToken()));
+        Account account = maybeAccount.get();
+
+        Role role = accountRoleRepository.findRoleInfoByAccount(account);
+
+        if(!roleType.equals(role.getRoleType())) {
+            log.info("사업자가 아닌 사용자는 상품을 등록할 수 없습니다.");
+            return null;
+        }
+        else {
+            Product product = requestForm.toProduct();
+            productRepository.save(product);
+            return product;
+        }
     }
 }

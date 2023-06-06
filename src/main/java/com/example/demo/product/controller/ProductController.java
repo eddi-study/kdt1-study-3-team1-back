@@ -2,6 +2,7 @@ package com.example.demo.product.controller;
 
 import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
+import com.example.demo.product.controller.form.ProductRequestRefactoringForm;
 import com.example.demo.product.entity.Product;
 import com.example.demo.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class ProductController {
     public Product registerProduct (@RequestBody ProductRequestForm productRequestForm){
         log.info("registerProduct()");
         return productService.register(productRequestForm);
+    }
+    @PostMapping("/product-register-refactoring")
+    public Product registerProductRefactoring (@RequestBody ProductRequestRefactoringForm requestForm){
+        log.info("registerProduct()");
+        return productService.registerRefactoring(requestForm);
     }
 
     @GetMapping("/list")

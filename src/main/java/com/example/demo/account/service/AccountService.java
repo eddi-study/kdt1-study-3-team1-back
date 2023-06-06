@@ -8,4 +8,6 @@ public interface AccountService {
     Boolean register(AccountRegisterRequest registerRequest);
 
     AccountLoginResponseForm login(AccountLoginRequestForm requestForm);
+    Long findAccountIdByEmail(String email);
+
 }
