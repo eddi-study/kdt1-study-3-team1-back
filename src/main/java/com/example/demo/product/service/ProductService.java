@@ -2,6 +2,7 @@ package com.example.demo.product.service;
 
 import com.example.demo.product.controller.form.ProductModifyRequestForm;
 import com.example.demo.product.controller.form.ProductRequestForm;
+import com.example.demo.product.controller.form.ProductRequestRefactoringForm;
 import com.example.demo.product.entity.Product;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ProductService {
     Boolean delete(Long productId);
 
     Product modify(ProductModifyRequestForm requestForm);
+
+    Product registerRefactoring(ProductRequestRefactoringForm requestForm);
 }
